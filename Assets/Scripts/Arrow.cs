@@ -14,6 +14,10 @@ public class Arrow : MonoBehaviour
 
     private void Start()
     {
-        rb.velocity = transform.right * arrowSpeed;
+        Vector3 playerScale = transform.root.localScale;
+
+        Vector2 initialVelocity = playerScale.x > 0 ? transform.right : -transform.right;
+
+        rb.velocity = initialVelocity * arrowSpeed;
     }
 }

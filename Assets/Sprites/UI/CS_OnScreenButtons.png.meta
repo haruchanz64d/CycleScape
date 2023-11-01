@@ -129,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI_0
+      name: CS_OnScreenButtons_0
       rect:
         serializedVersion: 2
         x: 178
@@ -143,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dab1a8380aa3d0b47b7361b1b7d911d7
-      internalID: 204883457
+      spriteID: fbca830a6a006f446b258a8b73b3de47
+      internalID: 2041752780
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_1
+      name: CS_OnScreenButtons_1
       rect:
         serializedVersion: 2
         x: 2095
@@ -164,14 +164,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4dd2c5267fe0a46418ba07e49631e68a
-      internalID: -1799909641
+      spriteID: ef9e409713652394da41da3a571838b4
+      internalID: 1783554427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_2
+      name: CS_OnScreenButtons_2
       rect:
         serializedVersion: 2
         x: 4017
@@ -185,14 +185,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fcace9d008b7739429e64a32329a05ae
-      internalID: 1775102098
+      spriteID: e935716f10f07104b93144338b46e046
+      internalID: -403809800
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_3
+      name: CS_OnScreenButtons_3
       rect:
         serializedVersion: 2
         x: 5934
@@ -206,14 +206,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 300065c1210f50d4bab2af6803fcc24e
-      internalID: 1699470434
+      spriteID: 17d6cb08c4fa67e408557655f151cd34
+      internalID: -112689914
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_4
+      name: CS_OnScreenButtons_4
       rect:
         serializedVersion: 2
         x: 7856
@@ -227,14 +227,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f92ab7d0831a7b4595a4eafb1f9523a
-      internalID: 595754887
+      spriteID: fbb86e720b0a6664aa7edc4dc903e346
+      internalID: 254314293
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_5
+      name: CS_OnScreenButtons_5
       rect:
         serializedVersion: 2
         x: 173
@@ -248,14 +248,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebb9c13f513e1b4499871440925c676e
-      internalID: 488329631
+      spriteID: b4e9f5bbc0c123946a9881c32ddd8e78
+      internalID: -1967452897
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_6
+      name: CS_OnScreenButtons_6
       rect:
         serializedVersion: 2
         x: 2095
@@ -269,14 +269,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8f29f366dd5eed4c8737e216d78948c
-      internalID: 633936800
+      spriteID: 4d9daad511f77c544b04918548dde7bd
+      internalID: 1782495909
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_7
+      name: CS_OnScreenButtons_7
       rect:
         serializedVersion: 2
         x: 4017
@@ -290,14 +290,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bdc6f3cac5a771c4d8a72e8871b5e2d1
-      internalID: 830607605
+      spriteID: 1e85c3abcefd53441a6399b4d95a774e
+      internalID: -2068539487
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_8
+      name: CS_OnScreenButtons_8
       rect:
         serializedVersion: 2
         x: 5934
@@ -311,14 +311,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33484b938661c5945998041a2eb06a26
-      internalID: 1288815052
+      spriteID: 3d3b660c25473804384783f73b03fcda
+      internalID: -1776368119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_9
+      name: CS_OnScreenButtons_9
       rect:
         serializedVersion: 2
         x: 7856
@@ -332,14 +332,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b9b4aefce77bf446a0c70b5ce7dcb14
-      internalID: -2083369872
+      spriteID: d88182e85b765c9458f66c22b0015709
+      internalID: -1551806370
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_10
+      name: CS_OnScreenButtons_10
       rect:
         serializedVersion: 2
         x: 173
@@ -353,14 +353,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 136ec99ff912b8448965c21c0c024ef1
-      internalID: 1691302970
+      spriteID: 3c2cf5f2f568e4c4e9c1683f8154ea20
+      internalID: -1555367530
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_11
+      name: CS_OnScreenButtons_11
       rect:
         serializedVersion: 2
         x: 2095
@@ -374,19 +374,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d57c820f2abd7b640aab270f03818335
-      internalID: -1484176061
+      spriteID: 84bd2293f0687b84a9f452b15341f511
+      internalID: 1277584216
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_12
+      name: CS_OnScreenButtons_12
       rect:
         serializedVersion: 2
-        x: 4017
+        x: 4012
         y: 4814
-        width: 1566
+        width: 1571
         height: 1570
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -395,14 +395,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b4554200406af3418c9d5c34f396f77
-      internalID: 232998095
+      spriteID: 9f93df75b7e4ac64098385396f76d474
+      internalID: 667872424
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_13
+      name: CS_OnScreenButtons_13
       rect:
         serializedVersion: 2
         x: 5934
@@ -416,14 +416,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eccfbf37948da8548b993c19c14835bc
-      internalID: -1811211757
+      spriteID: 306c7eea65541d947a786f11aff8c8ce
+      internalID: -1656492888
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_14
+      name: CS_OnScreenButtons_14
       rect:
         serializedVersion: 2
         x: 7856
@@ -437,8 +437,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7da6b36bcadce2948956a2aa45d32a26
-      internalID: -1210880269
+      spriteID: 905a694a21bd05545b69149f3c0a0e49
+      internalID: -1338258955
       vertices: []
       indices: 
       edges: []
@@ -454,21 +454,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      UI_0: 204883457
-      UI_1: -1799909641
-      UI_10: 1691302970
-      UI_11: -1484176061
-      UI_12: 232998095
-      UI_13: -1811211757
-      UI_14: -1210880269
-      UI_2: 1775102098
-      UI_3: 1699470434
-      UI_4: 595754887
-      UI_5: 488329631
-      UI_6: 633936800
-      UI_7: 830607605
-      UI_8: 1288815052
-      UI_9: -2083369872
+      CS_OnScreenButtons_0: 2041752780
+      CS_OnScreenButtons_1: 1783554427
+      CS_OnScreenButtons_10: -1555367530
+      CS_OnScreenButtons_11: 1277584216
+      CS_OnScreenButtons_12: 667872424
+      CS_OnScreenButtons_13: -1656492888
+      CS_OnScreenButtons_14: -1338258955
+      CS_OnScreenButtons_2: -403809800
+      CS_OnScreenButtons_3: -112689914
+      CS_OnScreenButtons_4: 254314293
+      CS_OnScreenButtons_5: -1967452897
+      CS_OnScreenButtons_6: 1782495909
+      CS_OnScreenButtons_7: -2068539487
+      CS_OnScreenButtons_8: -1776368119
+      CS_OnScreenButtons_9: -1551806370
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

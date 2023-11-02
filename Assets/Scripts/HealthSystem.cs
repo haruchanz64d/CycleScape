@@ -14,11 +14,10 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private Image healthBar;
     private Rigidbody2D rb;
     [Header("DoT")]
-    [SerializeField] private bool isDoTActive = false;
+    [SerializeField] private bool isDotActive = false;
     [SerializeField] private float dotDamage = 0.75f;
     [SerializeField] private float dotTickInterval = 1.5f;
     [SerializeField] private float dotTimer = 0f;
-    [SerializeField] private float dotDamageIncreaseOverTime = 0.25f;
 
     [Header("Slowness")]
     [SerializeField] private bool isSlowed = false;
@@ -49,10 +48,14 @@ public class HealthSystem : MonoBehaviour
     {
         if (currentHealth <= 0f)
         {
-            Die();
+            this.GetComponent<Player>().isDead = true;
+            StartCoroutine(Die());
         }
 
-        if (isDoTActive)
+        if (Input.GetKeyDown(KeyCode.Tab))
+            isSlowed = true;
+
+        if (isDotActive)
         {
             UpdateDoTColor();
             dotTimer += Time.deltaTime;
@@ -63,7 +66,7 @@ public class HealthSystem : MonoBehaviour
             }
         }
 
-        if (!isDoTActive)
+        if (!isDotActive)
         {
             GetComponent<SpriteRenderer>().color = Color.white;
         }
@@ -81,47 +84,62 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
-    private void Die()
+    private IEnumerator Die()
     {
+        this.GetComponent<Player>().HandleDeathAnimation();
+        yield return new WaitForSeconds(2.5f);
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Sperm"))
+        {
+            TakeDamage(5);
+            Destroy(collision.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Blood"))
-            isDoTActive = true;
+            isDotActive = true;
         if (collision.gameObject.CompareTag("Positive"))
         {
-            collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
-            RegainHealth(10);
             Destroy(collision.gameObject);
+            RegainHealth(10);
+            collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
         }
         if (collision.gameObject.CompareTag("Negative"))
         {
-            collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
-            TakeDamage(10);
             Destroy(collision.gameObject);
+            TakeDamage(10);
+            collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
         }
         if (collision.gameObject.CompareTag("AntiDoT"))
         {
-            collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
-            isDoTActive = false;
-            Destroy(collision.gameObject);
-            StartCoroutine(ResetDoTAfterSeconds(5f));
+            if(!isDotActive)
+            {
+                Destroy(collision.gameObject);
+            }
+            else
+            {
+                Destroy(collision.gameObject);
+                isDotActive = false;
+                collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
+                StartCoroutine(ResetDoTAfterSeconds(5f));
+            }
         }
-        // WIP
         if (collision.gameObject.CompareTag("Ovulation"))
         {
-            collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
             Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
         }
     }
-
-
     private IEnumerator ResetDoTAfterSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        isDoTActive = true;
+        isDotActive = true;
     }
 
     private void UpdateDoTColor()
@@ -141,4 +159,5 @@ public class HealthSystem : MonoBehaviour
             GetComponent<SpriteRenderer>().color = Color.red;
         }
     }
+
 }

@@ -204,6 +204,8 @@ MonoBehaviour:
   m_movementSpeed: 5
   shootingPoint: {fileID: 4279284757592723884}
   arrowPrefab: {fileID: 6979085403644366694, guid: 5926d452595a8f04e9552e66ad647be1, type: 3}
+  isAttacking: 0
+  isDead: 0
 --- !u!114 &3674222029708313483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,3 +219,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 0}
+  isDotActive: 0
+  dotDamage: 0.25
+  dotTickInterval: 1
+  dotTimer: 0
+  dotDamageIncreaseOverTime: 0.25
+  isSlowed: 0
+  slowAmount: 0.5
+  slowDuration: 5

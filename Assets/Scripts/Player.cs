@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     private const string ANIMATION_IDLE = "Player_Idle";
     private const string ANIMATION_ATK = "Player_Attack";
     private const string ANIMATION_WALK = "Player_Walk";
-    private const string ANIMATION_DEAD = "Player_Dead";
+    private const string ANIMATION_DEAD = "Player_Death";
     private const string ANIMATION_MOONWALK = "Player_Moonwalk";
     private Animator animator;
 
@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     private float nextTimeToDrawArrow = 0f;
 
     private HealthSystem health;
+    public bool isDead = false;
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -68,6 +69,8 @@ public class Player : MonoBehaviour
 
     private void HandleAnimations()
     {
+        if (isDead)
+            return;
         if (isAttacking)
             animator.Play(ANIMATION_ATK);
         if (rigidbody2D.velocity.magnitude > 0)
@@ -82,6 +85,11 @@ public class Player : MonoBehaviour
     {
         Vector2 movement = inputActions.Gameplay.Move.ReadValue<Vector2>();
         rigidbody2D.velocity = new Vector2(movement.x * m_movementSpeed, movement.y * m_movementSpeed);
+    }
+
+    public void HandleDeathAnimation()
+    {
+        animator.Play(ANIMATION_DEAD);
     }
 
     private void HandleShooting()
@@ -109,6 +117,4 @@ public class Player : MonoBehaviour
         maxArrowCount -= currentArrowCountMax;
         isReloading = false;
     }
-
-
 }

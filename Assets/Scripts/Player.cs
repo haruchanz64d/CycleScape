@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Animations;
 public class Player : MonoBehaviour
 {
     [Header("Animation Constants")]
@@ -7,6 +8,7 @@ public class Player : MonoBehaviour
     private const string ANIMATION_ATK = "Player_Attack";
     private const string ANIMATION_WALK = "Player_Walk";
     private const string ANIMATION_DEAD = "Player_Dead";
+    private const string ANIMATION_MOONWALK = "Player_Moonwalk";
     private Animator animator;
 
     [Header("Movement")]
@@ -17,7 +19,15 @@ public class Player : MonoBehaviour
     [Header("Shooting")]
     [SerializeField] private Transform shootingPoint;
     [SerializeField] private GameObject arrowPrefab;
-    private bool isAttacking = false;
+    [SerializeField] private bool isAttacking = false;
+    private int arrowCount = 0;
+    private int currentArrowCountMax = 5;
+    public int GetArrowCount() { return arrowCount; }
+    private int maxArrowCount = 15;
+    public int GetMaxArrowCount() { return maxArrowCount; }
+    private float bowReloadTime = 1.5f;
+    private bool isReloading = false;
+    private float nextTimeToDrawArrow = 0f;
 
     private HealthSystem health;
     private void Awake()
@@ -26,6 +36,11 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         inputActions = new InputActions();
         health = GetComponent<HealthSystem>();
+    }
+
+    private void Start()
+    {
+        arrowCount = currentArrowCountMax;
     }
 
     private void OnEnable()
@@ -39,15 +54,12 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        if (inputActions.Gameplay.Attack.triggered) 
-            HandleShooting();
-        HandleAnimations();
-
-        // Debugging Purposes
-        if (Input.GetKey(KeyCode.LeftControl))
+        if (inputActions.Gameplay.Attack.triggered && Time.time >= nextTimeToDrawArrow)
         {
-            health.TakeDamage(1.0f);
+            isAttacking = true;
+            HandleShooting();
         }
+        HandleAnimations();
     }
     private void FixedUpdate()
     {
@@ -58,14 +70,10 @@ public class Player : MonoBehaviour
     {
         if (isAttacking)
             animator.Play(ANIMATION_ATK);
-        else if (Mathf.Abs(rigidbody2D.velocity.x) > 0.1f)
-        {
+        if (rigidbody2D.velocity.magnitude > 0)
+            animator.Play(ANIMATION_MOONWALK);
+        else if (rigidbody2D.velocity.magnitude < 0)
             animator.Play(ANIMATION_WALK);
-            if (rigidbody2D.velocity.x > 0)
-                transform.localScale = new Vector3(2.5f, 2.5f, 1);
-            else
-                transform.localScale = new Vector3(-2.5f, 2.5f, 1);
-        }
         else
             animator.Play(ANIMATION_IDLE);
     }
@@ -73,17 +81,34 @@ public class Player : MonoBehaviour
     private void HandleMovement()
     {
         Vector2 movement = inputActions.Gameplay.Move.ReadValue<Vector2>();
-        rigidbody2D.velocity = new Vector2(movement.x * m_movementSpeed, rigidbody2D.velocity.y);
-
-        if (movement.x < 0)
-            transform.localScale = new Vector3(-2.5f, 2.5f, 1);
-        else if (movement.x > 0)
-            transform.localScale = new Vector3(2.5f, 2.5f, 1);
+        rigidbody2D.velocity = new Vector2(movement.x * m_movementSpeed, movement.y * m_movementSpeed);
     }
 
     private void HandleShooting()
     {
+        if (isReloading)
+            return;
+
+        if (arrowCount <= 0)
+        {
+            StartCoroutine(ReloadArrow());
+            return;
+        }
         Instantiate(arrowPrefab, shootingPoint.transform.position, shootingPoint.transform.rotation);
+        arrowCount--;
+        nextTimeToDrawArrow = Time.time + bowReloadTime;
+        isAttacking = false;
     }
+
+
+    private IEnumerator ReloadArrow()
+    {
+        isReloading = true;
+        yield return new WaitForSeconds(bowReloadTime);
+        arrowCount = currentArrowCountMax;
+        maxArrowCount -= currentArrowCountMax;
+        isReloading = false;
+    }
+
 
 }

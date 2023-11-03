@@ -5,7 +5,7 @@ using UnityEngine;
 public class Sperm : MonoBehaviour
 {
     private Rigidbody2D rb;
-    [SerializeField] private float speed = -1f;
+    [SerializeField] private float speed = 1.5f;
     private bool isCollidedWithEgg = false;
     public bool IsCollidedWithEgg() { return isCollidedWithEgg; }
     private void Start()

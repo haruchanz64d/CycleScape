@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.Animations;
+using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [Header("Animation Constants")]
@@ -10,12 +10,10 @@ public class Player : MonoBehaviour
     private const string ANIMATION_DEAD = "Player_Death";
     private const string ANIMATION_MOONWALK = "Player_Moonwalk";
     private Animator animator;
-
     [Header("Movement")]
     [SerializeField] private float m_movementSpeed = 5.0f;
     new Rigidbody2D rigidbody2D;
-    private InputActions inputActions;
-
+    private InputActions inputActions;   
     [Header("Shooting")]
     [SerializeField] private Transform shootingPoint;
     [SerializeField] private GameObject arrowPrefab;
@@ -71,8 +69,7 @@ public class Player : MonoBehaviour
     {
         if (isDead)
             return;
-        if (isAttacking)
-            animator.Play(ANIMATION_ATK);
+        if (isAttacking) animator.Play(ANIMATION_ATK);
         if (rigidbody2D.velocity.magnitude > 0)
             animator.Play(ANIMATION_MOONWALK);
         else if (rigidbody2D.velocity.magnitude < 0)

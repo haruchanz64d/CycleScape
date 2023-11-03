@@ -106,40 +106,47 @@ public class HealthSystem : MonoBehaviour
             isDotActive = true;
         if (collision.gameObject.CompareTag("Positive"))
         {
-            Destroy(collision.gameObject);
-            RegainHealth(10);
+            RegainHealth(Random.Range(1f, 10f));
             collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
+            StartCoroutine(DestroyAfterSeconds(collision.gameObject, 1.0f));
         }
         if (collision.gameObject.CompareTag("Negative"))
         {
-            Destroy(collision.gameObject);
-            TakeDamage(10);
+            TakeDamage(Random.Range(1f, 10f));
             collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
+            StartCoroutine(DestroyAfterSeconds(collision.gameObject, 1.0f));
         }
         if (collision.gameObject.CompareTag("AntiDoT"))
         {
             if(!isDotActive)
             {
-                Destroy(collision.gameObject);
+                collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
+                StartCoroutine(DestroyAfterSeconds(collision.gameObject, 1.0f));
             }
             else
             {
-                Destroy(collision.gameObject);
                 isDotActive = false;
                 collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
                 StartCoroutine(ResetDoTAfterSeconds(5f));
+                StartCoroutine(DestroyAfterSeconds(collision.gameObject, 1.0f));
             }
         }
         if (collision.gameObject.CompareTag("Ovulation"))
         {
-            Destroy(collision.gameObject);
             collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
+            StartCoroutine(DestroyAfterSeconds(collision.gameObject, 1.0f));
         }
     }
     private IEnumerator ResetDoTAfterSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
         isDotActive = true;
+    }
+
+    private IEnumerator DestroyAfterSeconds(GameObject gameObject, float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        Destroy(gameObject);
     }
 
     private void UpdateDoTColor()

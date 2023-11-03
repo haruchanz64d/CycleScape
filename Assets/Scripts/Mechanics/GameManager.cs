@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public enum MenstrualPhase
 {
     Menstrual,
@@ -6,20 +8,21 @@ public enum MenstrualPhase
     Luteal
 }
 
-public class MenstrualCyclePhase
+public class GameManager : MonoBehaviour
 {
+    [SerializeField] private float timePerPhase = 120f;
     public MenstrualPhase currentMenstrualPhase { get; set; }
     public float TimeRemaining { get; set; }
 
-    public MenstrualCyclePhase()
+    public GameManager()
     {
         currentMenstrualPhase = MenstrualPhase.Menstrual;
-        TimeRemaining = 300f;
+        TimeRemaining = timePerPhase;
     }
 
-    public void Update(float deltaTime)
+    private void Update()
     {
-        TimeRemaining -= deltaTime;
+        TimeRemaining -= Time.deltaTime;
 
         if (TimeRemaining <= 0f)
         {
@@ -31,20 +34,24 @@ public class MenstrualCyclePhase
     {
         switch (currentMenstrualPhase)
         {
+            // Collect item like wave system
             case MenstrualPhase.Menstrual:
                 currentMenstrualPhase = MenstrualPhase.Follicular;
-                TimeRemaining = 300f;
+                TimeRemaining = timePerPhase;
                 break;
+            // Collect item like wave system
             case MenstrualPhase.Follicular:
                 currentMenstrualPhase = MenstrualPhase.Ovulation;
-                TimeRemaining = 300f;
+                TimeRemaining = timePerPhase;
                 break;
+            // Just a cutscene
             case MenstrualPhase.Ovulation:
                 currentMenstrualPhase = MenstrualPhase.Luteal;
                 break;
+            // Defense type mini-game
             case MenstrualPhase.Luteal:
                 currentMenstrualPhase = MenstrualPhase.Menstrual;
-                TimeRemaining = 300f;
+                TimeRemaining = timePerPhase;
                 break;
         }
     }

@@ -12,6 +12,7 @@ TagManager:
   - Sperm
   - Arrow
   - Egg
+  - GameManager
   layers:
   - Default
   - TransparentFX

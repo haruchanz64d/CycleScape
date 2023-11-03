@@ -1,7 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
-public class GameManager : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     private Player player;
     [SerializeField] private TextMeshProUGUI currentAmmoText;
@@ -9,6 +10,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI currentHealthText;
     [SerializeField] private TextMeshProUGUI maxHealthText;
+
+    private bool isCanvasWithATKActivated;
+    private bool isCanvasWithoutATKActivated;
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();

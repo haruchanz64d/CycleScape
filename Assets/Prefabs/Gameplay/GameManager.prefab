@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3885203650875421197}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc474cd5dddf5b449603e755ed77c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timePerPhase: 120
+  phaseTxt: {fileID: 0}
+  timePerPhase: 10

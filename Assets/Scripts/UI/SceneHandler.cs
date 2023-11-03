@@ -6,6 +6,12 @@ public class SceneHandler : MonoBehaviour
 
     public void ChangeScene()
     {
+        Debug.Log("Loading scene...");
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

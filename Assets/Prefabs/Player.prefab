@@ -62,7 +62,7 @@ Transform:
   m_GameObject: {fileID: 9217856321926371868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4279284757592723884}
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73eab80dab17cf7429492a9c5486b792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_movementSpeed: 5
+  m_movementSpeed: 6.5
   shootingPoint: {fileID: 4279284757592723884}
   arrowPrefab: {fileID: 6979085403644366694, guid: 5926d452595a8f04e9552e66ad647be1, type: 3}
   isAttacking: 0
@@ -225,7 +225,6 @@ MonoBehaviour:
   dotDamage: 0.25
   dotTickInterval: 1
   dotTimer: 0
-  dotDamageIncreaseOverTime: 0.25
   isSlowed: 0
   slowAmount: 0.5
   slowDuration: 5

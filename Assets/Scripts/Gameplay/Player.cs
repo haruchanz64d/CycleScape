@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     private const string ANIMATION_MOONWALK = "Player_Moonwalk";
     private Animator animator;
     [Header("Movement")]
-    [SerializeField] private float m_movementSpeed = 5.0f;
+    [SerializeField] private float m_movementSpeed = 6.5f;
     new Rigidbody2D rigidbody2D;
     private InputActions inputActions;   
     [Header("Shooting")]

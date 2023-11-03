@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 public enum MenstrualPhase
 {
     Menstrual,
@@ -10,7 +10,8 @@ public enum MenstrualPhase
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private float timePerPhase = 120f;
+    [SerializeField] private Image progressBar;
+    [SerializeField] private float timePerPhase = 60;
     public MenstrualPhase currentMenstrualPhase { get; set; }
     public float TimeRemaining { get; set; }
 
@@ -23,7 +24,8 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         TimeRemaining -= Time.deltaTime;
-
+        progressBar.fillAmount = TimeRemaining / timePerPhase;
+        progressBar.fillClockwise = false;
         if (TimeRemaining <= 0f)
         {
             NextPhase();
@@ -47,6 +49,7 @@ public class GameManager : MonoBehaviour
             // Just a cutscene
             case MenstrualPhase.Ovulation:
                 currentMenstrualPhase = MenstrualPhase.Luteal;
+                TimeRemaining = timePerPhase;
                 break;
             // Defense type mini-game
             case MenstrualPhase.Luteal:

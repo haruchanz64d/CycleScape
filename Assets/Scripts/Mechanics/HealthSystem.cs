@@ -17,7 +17,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private bool isDotActive = false;
     [SerializeField] private float dotDamage = 0.75f;
     [SerializeField] private float dotTickInterval = 1.5f;
-    [SerializeField] private float dotTimer = 0f;
+    [SerializeField] private float dotTimer = 0f; 
 
     [Header("Slowness")]
     [SerializeField] private bool isSlowed = false;
@@ -130,11 +130,6 @@ public class HealthSystem : MonoBehaviour
                 StartCoroutine(ResetDoTAfterSeconds(5f));
                 StartCoroutine(DestroyAfterSeconds(collision.gameObject, 1.0f));
             }
-        }
-        if (collision.gameObject.CompareTag("Ovulation"))
-        {
-            collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
-            StartCoroutine(DestroyAfterSeconds(collision.gameObject, 1.0f));
         }
     }
     private IEnumerator ResetDoTAfterSeconds(float seconds)

@@ -44,5 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc474cd5dddf5b449603e755ed77c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phaseTxt: {fileID: 0}
+  progressBar: {fileID: 0}
   timePerPhase: 10
+  IsFadingToNextPhase: 0
+  fadeAnim: {fileID: 0}

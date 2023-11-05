@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.SceneManagement;
 public enum MenstrualPhase
 {
     Menstrual,
@@ -11,7 +13,7 @@ public enum MenstrualPhase
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Image progressBar;
-    [SerializeField] private float timePerPhase = 60;
+    [SerializeField] private float timePerPhase = 10; // Two minutes of gameplay time, I just put 10 for debugging
     public MenstrualPhase currentMenstrualPhase { get; set; }
     public float TimeRemaining { get; set; }
 
@@ -25,9 +27,9 @@ public class GameManager : MonoBehaviour
     {
         TimeRemaining -= Time.deltaTime;
         progressBar.fillAmount = TimeRemaining / timePerPhase;
-        progressBar.fillClockwise = false;
         if (TimeRemaining <= 0f)
         {
+            Debug.Log($"Current Phase is {currentMenstrualPhase}");
             NextPhase();
         }
     }
@@ -36,26 +38,28 @@ public class GameManager : MonoBehaviour
     {
         switch (currentMenstrualPhase)
         {
-            // Collect item like wave system
             case MenstrualPhase.Menstrual:
                 currentMenstrualPhase = MenstrualPhase.Follicular;
                 TimeRemaining = timePerPhase;
                 break;
-            // Collect item like wave system
             case MenstrualPhase.Follicular:
                 currentMenstrualPhase = MenstrualPhase.Ovulation;
                 TimeRemaining = timePerPhase;
                 break;
-            // Just a cutscene
             case MenstrualPhase.Ovulation:
                 currentMenstrualPhase = MenstrualPhase.Luteal;
                 TimeRemaining = timePerPhase;
                 break;
-            // Defense type mini-game
             case MenstrualPhase.Luteal:
                 currentMenstrualPhase = MenstrualPhase.Menstrual;
                 TimeRemaining = timePerPhase;
                 break;
         }
+    }
+
+    public void RestartGame(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        currentMenstrualPhase = MenstrualPhase.Menstrual;
+        Time.timeScale = 1f;
     }
 }

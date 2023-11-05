@@ -19,7 +19,7 @@ public class SpermSpawner : MonoBehaviour
     private IEnumerator spawnEnemy(float interval, GameObject enemy)
     {
         yield return new WaitForSeconds(interval);
-        GameObject newEnemy = Instantiate(enemy, new Vector2(this.transform.position.x, Random.Range(-5f, 5f)), Quaternion.identity);
+        GameObject newEnemy = Instantiate(enemy, new Vector2(this.transform.position.x, Random.Range(-2f, 2f)), Quaternion.identity);
         StartCoroutine(spawnEnemy(interval, enemy));
     }
 }

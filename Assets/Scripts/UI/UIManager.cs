@@ -4,6 +4,12 @@ using UnityEngine;
 using TMPro;
 public class UIManager : MonoBehaviour
 {
+    [Header("Canvas Collections")]
+    [SerializeField] private Canvas mainCanvas;
+    [SerializeField] private Canvas onScreenControls;
+    [SerializeField] private Canvas tutorialModal;
+    [SerializeField] private Canvas pauseCanvas;
+
     private Player player;
     [SerializeField] private TextMeshProUGUI currentAmmoText;
     [SerializeField] private TextMeshProUGUI maxAmmoText;
@@ -11,11 +17,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentHealthText;
     [SerializeField] private TextMeshProUGUI maxHealthText;
 
-    private bool isCanvasWithATKActivated;
-    private bool isCanvasWithoutATKActivated;
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+
+        mainCanvas.enabled = true;
+        onScreenControls.enabled = true;
+        tutorialModal.enabled = false;
+        pauseCanvas.enabled = false;
     }
 
     private void Update()
@@ -29,5 +38,23 @@ public class UIManager : MonoBehaviour
 
         currentHealthText.SetText(currentHealth.ToString());
         maxHealthText.SetText(maxHealth.ToString());
+    }
+
+    public void PauseGame(){
+        Time.timeScale = 0f;
+        player.GetComponent<Player>().enabled = false;
+        mainCanvas.enabled = false;
+        onScreenControls.enabled = false;
+        tutorialModal.enabled = false;
+        pauseCanvas.enabled = true;
+    }
+
+    public void ResumeGame(){
+        Time.timeScale = 1f;
+        player.GetComponent<Player>().enabled = true;
+        mainCanvas.enabled = true;
+        onScreenControls.enabled = true;
+        tutorialModal.enabled = false;
+        pauseCanvas.enabled = false;
     }
 }

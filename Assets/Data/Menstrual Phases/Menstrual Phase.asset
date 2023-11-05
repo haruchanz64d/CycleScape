@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db764d54785c6a0478aa7b3337fc5969, type: 3}
   m_Name: Menstrual Phase
   m_EditorClassIdentifier: 
-  tutorialTitle: Menstrual Phase
+  tutorialTitle: How to Play?
   tutorialImages:
   - {fileID: 0}
   - {fileID: 0}

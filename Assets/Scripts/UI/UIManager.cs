@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 public class UIManager : MonoBehaviour
 {
     [Header("Canvas Collections")]
     [SerializeField] private Canvas mainCanvas;
     [SerializeField] private Canvas onScreenControls;
-    [SerializeField] private Canvas tutorialModal;
     [SerializeField] private Canvas pauseCanvas;
 
     private Player player;
-    [SerializeField] private TextMeshProUGUI currentAmmoText;
-    [SerializeField] private TextMeshProUGUI maxAmmoText;
 
     [SerializeField] private TextMeshProUGUI currentHealthText;
     [SerializeField] private TextMeshProUGUI maxHealthText;
@@ -23,7 +21,6 @@ public class UIManager : MonoBehaviour
 
         mainCanvas.enabled = true;
         onScreenControls.enabled = true;
-        tutorialModal.enabled = false;
         pauseCanvas.enabled = false;
     }
 
@@ -31,8 +28,6 @@ public class UIManager : MonoBehaviour
     {
         if (player == null)
             return;
-        currentAmmoText.SetText(player.GetArrowCount().ToString());
-        maxAmmoText.SetText(player.GetMaxArrowCount().ToString());
         int currentHealth = (int)player.GetComponent<HealthSystem>().GetCurrentHealth();
         int maxHealth = (int)player.GetComponent<HealthSystem>().GetMaxHealth();
 
@@ -40,21 +35,31 @@ public class UIManager : MonoBehaviour
         maxHealthText.SetText(maxHealth.ToString());
     }
 
-    public void PauseGame(){
+    public void ShowTutorial()
+    {
         Time.timeScale = 0f;
-        player.GetComponent<Player>().enabled = false;
         mainCanvas.enabled = false;
         onScreenControls.enabled = false;
-        tutorialModal.enabled = false;
+        pauseCanvas.enabled = true;
+    }
+
+    public void PauseGame(){
+        Time.timeScale = 0f;
+        mainCanvas.enabled = false;
+        onScreenControls.enabled = false;
         pauseCanvas.enabled = true;
     }
 
     public void ResumeGame(){
         Time.timeScale = 1f;
-        player.GetComponent<Player>().enabled = true;
         mainCanvas.enabled = true;
         onScreenControls.enabled = true;
-        tutorialModal.enabled = false;
         pauseCanvas.enabled = false;
+    }
+
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("CS_Scene_MainMenu");
     }
 }

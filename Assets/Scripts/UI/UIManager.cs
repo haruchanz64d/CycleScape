@@ -6,10 +6,10 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     [Header("Canvas Collections")]
-    [SerializeField] private Canvas mainCanvas;
-    [SerializeField] private Canvas onScreenControls;
-    [SerializeField] private Canvas pauseCanvas;
-
+    public Canvas mainCanvas;
+    public Canvas onScreenControls;
+    public Canvas pauseCanvas;
+    public Canvas modalCanvas;
     private Player player;
 
     [SerializeField] private TextMeshProUGUI currentHealthText;
@@ -18,9 +18,14 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    }
 
-        mainCanvas.enabled = true;
-        onScreenControls.enabled = true;
+    private void Start()
+    {
+        Time.timeScale = 0f;
+        modalCanvas.enabled = true;
+        mainCanvas.enabled = false;
+        onScreenControls.enabled = false;
         pauseCanvas.enabled = false;
     }
 
@@ -38,6 +43,7 @@ public class UIManager : MonoBehaviour
     public void ShowTutorial()
     {
         Time.timeScale = 0f;
+        modalCanvas.enabled = true;
         mainCanvas.enabled = false;
         onScreenControls.enabled = false;
         pauseCanvas.enabled = true;
@@ -45,6 +51,7 @@ public class UIManager : MonoBehaviour
 
     public void PauseGame(){
         Time.timeScale = 0f;
+        modalCanvas.enabled = false;
         mainCanvas.enabled = false;
         onScreenControls.enabled = false;
         pauseCanvas.enabled = true;
@@ -52,6 +59,7 @@ public class UIManager : MonoBehaviour
 
     public void ResumeGame(){
         Time.timeScale = 1f;
+        modalCanvas.enabled = false;
         mainCanvas.enabled = true;
         onScreenControls.enabled = true;
         pauseCanvas.enabled = false;

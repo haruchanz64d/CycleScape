@@ -5,23 +5,32 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] Image soundOnIcon;
     [SerializeField] Image soundOffIcon;
-    private bool muted = false;
+    private bool muted;
 
-    void Start()
+    private void Start()
     {
-        if (!PlayerPrefs.HasKey("muted"))
+        muted = PlayerPrefs.GetInt("muted", 0) == 1;
+        DontDestroyOnLoad(this.gameObject);
+        if (!muted)
         {
-            PlayerPrefs.SetInt("muted", 0);
-            Load();
+            AudioListener.pause = false;
+            AudioSource[] musicSources = FindObjectsOfType<AudioSource>();
+            foreach (AudioSource musicSource in musicSources)
+            {
+                musicSource.mute = false;
+            }
         }
-        UpdateButtonIcon();
-        AudioListener.pause = muted;
+        else
+        {
+            AudioListener.pause = true;
+            AudioSource[] musicSources = FindObjectsOfType<AudioSource>();
+            foreach (AudioSource musicSource in musicSources)
+            {
+                musicSource.mute = true;
+            }
+        }
 
-        AudioSource[] musicSources = FindObjectsOfType<AudioSource>();
-        foreach (AudioSource musicSource in musicSources)
-        {
-            musicSource.mute = muted;
-        }
+        UpdateButtonIcon();
     }
 
     public void OnButtonPress()
@@ -35,24 +44,14 @@ public class SoundManager : MonoBehaviour
         }
 
         UpdateButtonIcon();
+        Save();
     }
     private void UpdateButtonIcon()
     {
-        if (muted == false)
-        {
-            soundOnIcon.enabled = true;
-            soundOffIcon.enabled = false;
-        }
-        else
-        {
-            soundOnIcon.enabled = false;
-            soundOffIcon.enabled = true;
-        }
+        soundOnIcon.enabled = muted == false;
+        soundOffIcon.enabled = muted;
     }
-    private void Load()
-    {
-        muted = PlayerPrefs.GetInt("muted") == 1;
-    }
+
     private void Save()
     {
         PlayerPrefs.SetInt("muted", muted ? 1 : 0);

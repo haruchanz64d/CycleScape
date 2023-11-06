@@ -14,14 +14,14 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private Image healthBar;
     private Rigidbody2D rb;
     [Header("DoT")]
-    [SerializeField] private bool isDotActive = false;
-    [SerializeField] private float dotDamage = 0.75f;
-    [SerializeField] private float dotTickInterval = 1.5f;
-    [SerializeField] private float dotTimer = 0f; 
+    public bool isDotActive = false;
+    private float dotDamage = 1.5f;
+    private float dotTickInterval = 1.0f;
+    [SerializeField] private float dotTimer = 0f;
 
     [Header("Slowness")]
-    [SerializeField] private bool isSlowed = false;
-    [SerializeField] private float slowAmount = 0.5f;
+    public bool isSlowed = false;
+    [SerializeField] private float slowAmount = 1.0f;
     [SerializeField] private float slowDuration = 5f;
 
     private void Start()
@@ -51,9 +51,6 @@ public class HealthSystem : MonoBehaviour
             this.GetComponent<Player>().isDead = true;
             StartCoroutine(Die());
         }
-
-        if (Input.GetKeyDown(KeyCode.Tab))
-            isSlowed = true;
 
         if (isDotActive)
         {
@@ -102,6 +99,7 @@ public class HealthSystem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Unused
         if (collision.gameObject.CompareTag("Blood"))
             isDotActive = true;
         if (collision.gameObject.CompareTag("Positive"))
@@ -118,17 +116,27 @@ public class HealthSystem : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("AntiDoT"))
         {
-            if(!isDotActive)
+            if (!isDotActive)
             {
                 collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
                 StartCoroutine(DestroyAfterSeconds(collision.gameObject, 1.0f));
+                RegainHealth(1.5f);
             }
             else
             {
-                isDotActive = false;
+                float randomNumber = Random.Range(0f, 1f);
+                Debug.Log(randomNumber);
+                if (randomNumber <= 0.20f)
+                {
+                    isDotActive = false;
+                    collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
+                    StartCoroutine(ResetDoTAfterSeconds(5f));
+                    StartCoroutine(DestroyAfterSeconds(collision.gameObject, 1.0f));
+                    RegainHealth(1.5f);
+                }
                 collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
-                StartCoroutine(ResetDoTAfterSeconds(5f));
                 StartCoroutine(DestroyAfterSeconds(collision.gameObject, 1.0f));
+                RegainHealth(1.5f);
             }
         }
     }

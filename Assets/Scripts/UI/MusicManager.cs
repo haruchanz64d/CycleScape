@@ -44,6 +44,7 @@ public class MusicManager : MonoBehaviour
             musicOnIcon.enabled = false;
             musicOffIcon.enabled = true;
         }
+        Save();
     }
     private void Load()
     {

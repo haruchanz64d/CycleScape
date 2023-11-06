@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db764d54785c6a0478aa7b3337fc5969, type: 3}
+  m_Name: Follicular Phase
+  m_EditorClassIdentifier: 
+  tutorialTitle: Follicular Phase
+  tutorialImages:
+  - {fileID: 21300000, guid: 7cfda9e9b165bf940a2e3509886a15fd, type: 3}
+  - {fileID: 21300000, guid: 79d3a24a33b4edf4f92b2e627132373b, type: 3}
+  - {fileID: 21300000, guid: e4a0ba509ad4e53428b299772e00bd15, type: 3}
+  textDescription:
+  - The Follicular phase is the preparation of the ovaries to release an egg cell.
+    Uterus lining thickens again.
+  - During this phase, you will encounter waves of collectible items. Red items are
+    negative items that will harm the player, while green items are positive items
+    that will heal the player.
+  - In addition to these regular collectibles, moon objects will also spawn during
+    this phase. Collecting 10 moon objects will advance you to the next phase.

@@ -6,7 +6,7 @@ public class SceneHandler : MonoBehaviour
 
     public void ChangeScene()
     {
-        Debug.Log("Loading scene...");
+        Debug.Log($"Loading scene {sceneName}");
         SceneManager.LoadScene(sceneName);
     }
 

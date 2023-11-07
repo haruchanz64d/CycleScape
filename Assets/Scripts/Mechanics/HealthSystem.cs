@@ -22,6 +22,12 @@ public class HealthSystem : MonoBehaviour
     private float dotTickInterval = 1.25f;
     [SerializeField] private float dotTimer = 0f;
 
+    [Header("HP Drain")]
+    public bool isHPDraining = false;
+    private float drainAmount = 1f;
+    private float drainTickInterval = 1.5f;
+    private float drainTimer = 0f;
+
     [Header("Slowness")]
     public bool isSlowed = false;
     [SerializeField] private float slowAmount = 0.5f;
@@ -74,6 +80,16 @@ public class HealthSystem : MonoBehaviour
         if (isSlowed)
         {
             rb.velocity *= slowAmount;
+        }
+
+        if(isHPDraining)
+        {
+            drainTimer += Time.deltaTime;
+            if (drainTimer >= drainTickInterval)
+            {
+                TakeDamage(drainAmount);
+                drainTimer = 0f;
+            }
         }
     }
 

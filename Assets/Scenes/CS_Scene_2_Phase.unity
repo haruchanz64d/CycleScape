@@ -1081,6 +1081,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOver
       objectReference: {fileID: 0}
+    - target: {fileID: 133747034936736968, guid: dc9e4ea4c36413d4bbc3fe98a9dc4bba, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133747034936736968, guid: dc9e4ea4c36413d4bbc3fe98a9dc4bba, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133747034936736968, guid: dc9e4ea4c36413d4bbc3fe98a9dc4bba, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133747034936736968, guid: dc9e4ea4c36413d4bbc3fe98a9dc4bba, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133747034936736968, guid: dc9e4ea4c36413d4bbc3fe98a9dc4bba, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133747034936736968, guid: dc9e4ea4c36413d4bbc3fe98a9dc4bba, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133747035524422342, guid: dc9e4ea4c36413d4bbc3fe98a9dc4bba, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133747035524422342, guid: dc9e4ea4c36413d4bbc3fe98a9dc4bba, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133747035524422342, guid: dc9e4ea4c36413d4bbc3fe98a9dc4bba, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133747035524422342, guid: dc9e4ea4c36413d4bbc3fe98a9dc4bba, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133747035524422342, guid: dc9e4ea4c36413d4bbc3fe98a9dc4bba, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133747035524422342, guid: dc9e4ea4c36413d4bbc3fe98a9dc4bba, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2967870726483539139, guid: dc9e4ea4c36413d4bbc3fe98a9dc4bba, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1236,6 +1284,10 @@ PrefabInstance:
     - target: {fileID: 3674222029708313483, guid: 874050e584d7e3c4cb7f8ce8f1e84917, type: 3}
       propertyPath: maxHealth
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674222029708313483, guid: 874050e584d7e3c4cb7f8ce8f1e84917, type: 3}
+      propertyPath: isHPDraining
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3674222029708313483, guid: 874050e584d7e3c4cb7f8ce8f1e84917, type: 3}
       propertyPath: currentHealth
@@ -3020,7 +3072,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

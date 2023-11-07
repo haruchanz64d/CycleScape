@@ -20,8 +20,7 @@ MonoBehaviour:
   textDescription:
   - The Follicular phase is the preparation of the ovaries to release an egg cell.
     Uterus lining thickens again.
-  - During this phase, you will encounter waves of collectible items. Red items are
-    negative items that will harm the player, while green items are positive items
-    that will heal the player.
-  - In addition to these regular collectibles, moon objects will also spawn during
+  - In this phase, your health will slowly decrease, and you will see waves of objects
+    appear. Red objects will hurt you, while green objects will heal you.
+  - In addition to these regular objects, you will also see moon objects appear during
     this phase.

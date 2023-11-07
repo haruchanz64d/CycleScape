@@ -21,6 +21,6 @@ MonoBehaviour:
   - The menstrual phase is the breaking down of the lining of the uterus. It can
     last anytime from three to seven days. Uterus lining break down, menstruation
     occurs.
-  - During this phase, you will be afflicted with Bleeding and Slowness, which will
-    damage you throughout the phase and reduce your movement speed.
-  - Collectibles will be available along the way to aid in your survival.
+  - In this phase, you will start bleeding and move slower, which will hurt you throughout
+    the phase and make it harder for you to run.
+  - You can find objects along the way that will help you stay alive.

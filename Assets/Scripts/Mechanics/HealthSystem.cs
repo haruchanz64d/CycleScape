@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class HealthSystem : MonoBehaviour
 {
+    private int moonCounter;
+    public int MoonCounter() { return moonCounter; }
+
     // For Bubble Pop
     private const string ANIMATION_POP = "Pop";
 
@@ -15,13 +18,13 @@ public class HealthSystem : MonoBehaviour
     private Rigidbody2D rb;
     [Header("DoT")]
     public bool isDotActive = false;
-    private float dotDamage = 1.5f;
-    private float dotTickInterval = 1.0f;
+    private float dotDamage = 1.0f;
+    private float dotTickInterval = 1.25f;
     [SerializeField] private float dotTimer = 0f;
 
     [Header("Slowness")]
     public bool isSlowed = false;
-    [SerializeField] private float slowAmount = 1.0f;
+    [SerializeField] private float slowAmount = 0.5f;
     [SerializeField] private float slowDuration = 5f;
 
     private void Start()
@@ -106,21 +109,21 @@ public class HealthSystem : MonoBehaviour
         {
             RegainHealth(Random.Range(1f, 10f));
             collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
-            StartCoroutine(DestroyAfterSeconds(collision.gameObject, 1.0f));
+            StartCoroutine(DestroyAfterSeconds(collision.gameObject, 0.5f));
         }
         if (collision.gameObject.CompareTag("Negative"))
         {
             TakeDamage(Random.Range(1f, 10f));
             collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
-            StartCoroutine(DestroyAfterSeconds(collision.gameObject, 1.0f));
+            StartCoroutine(DestroyAfterSeconds(collision.gameObject, 0.5f));
         }
         if (collision.gameObject.CompareTag("AntiDoT"))
         {
             if (!isDotActive)
             {
                 collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
-                StartCoroutine(DestroyAfterSeconds(collision.gameObject, 1.0f));
-                RegainHealth(1.5f);
+                StartCoroutine(DestroyAfterSeconds(collision.gameObject, 0.5f));
+                RegainHealth(Random.Range(1.0f, 2.5f));
             }
             else
             {
@@ -131,13 +134,19 @@ public class HealthSystem : MonoBehaviour
                     isDotActive = false;
                     collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
                     StartCoroutine(ResetDoTAfterSeconds(5f));
-                    StartCoroutine(DestroyAfterSeconds(collision.gameObject, 1.0f));
-                    RegainHealth(1.5f);
+                    StartCoroutine(DestroyAfterSeconds(collision.gameObject, 0.5f));
+                    RegainHealth(Random.Range(1.0f, 2.5f));
                 }
                 collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
-                StartCoroutine(DestroyAfterSeconds(collision.gameObject, 1.0f));
-                RegainHealth(1.5f);
+                StartCoroutine(DestroyAfterSeconds(collision.gameObject, 0.5f));
+                RegainHealth(Random.Range(1.0f, 2.5f));
             }
+        }
+        if (collision.gameObject.CompareTag("Ovulation"))
+        {
+            collision.gameObject.GetComponent<Animator>().Play(ANIMATION_POP);
+            moonCounter++;
+            StartCoroutine(DestroyAfterSeconds(collision.gameObject, 0.5f));
         }
     }
     private IEnumerator ResetDoTAfterSeconds(float seconds)

@@ -18,8 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform shootingPoint;
     [SerializeField] private GameObject arrowPrefab;
     [SerializeField] private bool isAttacking = false;
-    private int arrowCount = 0;
-    private int currentArrowCountMax = 5;
+    private int arrowCount = 999;
     public int GetArrowCount() { return arrowCount; }
     private int maxArrowCount = 15;
     public int GetMaxArrowCount() { return maxArrowCount; }
@@ -35,11 +34,6 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         inputActions = new InputActions();
         health = GetComponent<HealthSystem>();
-    }
-
-    private void Start()
-    {
-        arrowCount = currentArrowCountMax;
     }
 
     private void OnEnable()
@@ -91,27 +85,9 @@ public class Player : MonoBehaviour
 
     private void HandleShooting()
     {
-        if (isReloading)
-            return;
-
-        if (arrowCount <= 0)
-        {
-            StartCoroutine(ReloadArrow());
-            return;
-        }
         Instantiate(arrowPrefab, shootingPoint.transform.position, shootingPoint.transform.rotation);
         arrowCount--;
         nextTimeToDrawArrow = Time.time + bowReloadTime;
         isAttacking = false;
-    }
-
-
-    private IEnumerator ReloadArrow()
-    {
-        isReloading = true;
-        yield return new WaitForSeconds(bowReloadTime);
-        arrowCount = currentArrowCountMax;
-        maxArrowCount -= currentArrowCountMax;
-        isReloading = false;
     }
 }

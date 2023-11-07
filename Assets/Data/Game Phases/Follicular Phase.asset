@@ -24,4 +24,4 @@ MonoBehaviour:
     negative items that will harm the player, while green items are positive items
     that will heal the player.
   - In addition to these regular collectibles, moon objects will also spawn during
-    this phase. Collecting 10 moon objects will advance you to the next phase.
+    this phase.

@@ -776,7 +776,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1137,7 +1137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4102e8540e86d2a4282570f4088e4b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: CS_Scene_1_Phase
+  sceneName: CS_Intro
 --- !u!1 &1552071637
 GameObject:
   m_ObjectHideFlags: 0

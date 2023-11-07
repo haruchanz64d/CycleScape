@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public Canvas onScreenControls;
     public Canvas pauseCanvas;
     public Canvas modalCanvas;
+    public Canvas gameOverCanvas;
     private Player player;
 
     [SerializeField] private TextMeshProUGUI currentHealthText;
@@ -23,6 +24,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 0f;
+        gameOverCanvas.enabled = false;
         modalCanvas.enabled = true;
         mainCanvas.enabled = false;
         onScreenControls.enabled = false;
@@ -31,6 +33,10 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        if(player.isDead == true)
+        {
+            ShowDeadScreen();
+        }
         if (player == null)
             return;
         int currentHealth = (int)player.GetComponent<HealthSystem>().GetCurrentHealth();
@@ -40,9 +46,26 @@ public class UIManager : MonoBehaviour
         maxHealthText.SetText(maxHealth.ToString());
     }
 
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
+    }
+
+    public void ShowDeadScreen()
+    {
+        Time.timeScale = 0f;
+        gameOverCanvas.enabled = true;
+        modalCanvas.enabled = false;
+        mainCanvas.enabled = false;
+        onScreenControls.enabled = false;
+        pauseCanvas.enabled = false;
+    }
+
     public void ShowTutorial()
     {
         Time.timeScale = 0f;
+        gameOverCanvas.enabled = false;
         modalCanvas.enabled = true;
         mainCanvas.enabled = false;
         onScreenControls.enabled = false;
@@ -51,6 +74,7 @@ public class UIManager : MonoBehaviour
 
     public void PauseGame(){
         Time.timeScale = 0f;
+        gameOverCanvas.enabled = false;
         modalCanvas.enabled = false;
         mainCanvas.enabled = false;
         onScreenControls.enabled = false;
@@ -59,6 +83,7 @@ public class UIManager : MonoBehaviour
 
     public void ResumeGame(){
         Time.timeScale = 1f;
+        gameOverCanvas.enabled = false;
         modalCanvas.enabled = false;
         mainCanvas.enabled = true;
         onScreenControls.enabled = true;

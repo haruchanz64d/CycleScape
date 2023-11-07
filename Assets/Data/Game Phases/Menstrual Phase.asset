@@ -15,7 +15,7 @@ MonoBehaviour:
   tutorialTitle: Menstrual Phase
   tutorialImages:
   - {fileID: 21300000, guid: 5166ed3a8a3eb80479b9bbfbaaf0de19, type: 3}
-  - {fileID: 21300000, guid: 007c73fcf3390df43a7868acad26c09c, type: 3}
+  - {fileID: 21300000, guid: 6a3ef48d8ca52c247b86dbd636129806, type: 3}
   - {fileID: 21300000, guid: 007c73fcf3390df43a7868acad26c09c, type: 3}
   textDescription:
   - The menstrual phase is the breaking down of the lining of the uterus. It can

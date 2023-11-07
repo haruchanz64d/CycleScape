@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Sperm : MonoBehaviour
 {
+    public delegate void OnSpermCollidedWithEggEventHandler();
     private Rigidbody2D rb;
     private float speed = -5.0f;
     private bool isCollidedWithEgg = false;
@@ -24,6 +26,7 @@ public class Sperm : MonoBehaviour
         {
             isCollidedWithEgg = true;
             Destroy(gameObject);
+            SceneManager.LoadScene("CS_Scene_5_Phase_Bad");
         }
     }
 

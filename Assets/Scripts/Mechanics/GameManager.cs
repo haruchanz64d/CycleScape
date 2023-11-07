@@ -5,11 +5,15 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public string sceneName;
-
+    private Player player;
     [SerializeField] private Image progressBar;
-    private float timePerPhase = 75;
+    private float timePerPhase = 70;
     public float TimeRemaining { get; set; }
 
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    }
     public GameManager()
     {
         TimeRemaining = timePerPhase;

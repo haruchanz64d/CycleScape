@@ -7,7 +7,7 @@ public class GameManagerV2 : MonoBehaviour
     public GameObject eggObject;
     public GameObject playerObject;
 
-    private float timePerPhase = 30;
+    private float timePerPhase = 75;
     public float TimeRemaining { get; set; }
 
     public GameManagerV2()

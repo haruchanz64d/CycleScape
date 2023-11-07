@@ -16,15 +16,16 @@ public class HealthSystem : MonoBehaviour
     public float GetCurrentHealth() { return currentHealth; }
     [SerializeField] private Image healthBar;
     private Rigidbody2D rb;
+
     [Header("DoT")]
     public bool isDotActive = false;
-    private float dotDamage = 1.0f;
+    private float dotDamage = 2.25f;
     private float dotTickInterval = 1.25f;
     [SerializeField] private float dotTimer = 0f;
 
     [Header("HP Drain")]
     public bool isHPDraining = false;
-    private float drainAmount = 1f;
+    private float drainAmount = 2.50f;
     private float drainTickInterval = 1.5f;
     private float drainTimer = 0f;
 

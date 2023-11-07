@@ -13,6 +13,7 @@ TagManager:
   - Arrow
   - Egg
   - GameManager
+  - Wall
   layers:
   - Default
   - TransparentFX

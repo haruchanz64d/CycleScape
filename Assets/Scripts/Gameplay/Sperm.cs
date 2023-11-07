@@ -28,6 +28,11 @@ public class Sperm : MonoBehaviour
             Destroy(gameObject);
             SceneManager.LoadScene("CS_BadEnding");
         }
+
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collision.collider);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

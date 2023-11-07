@@ -29,8 +29,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cutscenes/CS_GoodEnding.unity
     guid: 2d9e70c643ec5b9409908a1931055c5f
-  - enabled: 1
-    path: Assets/Scenes/CS_Scene_ThankYou.unity
-    guid: 1e20a7f13e34c6047be031cf44a186f6
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f0a0f350c9c6633439124a7d50b56edc, type: 2}

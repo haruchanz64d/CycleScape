@@ -26,7 +26,7 @@ public class Sperm : MonoBehaviour
         {
             isCollidedWithEgg = true;
             Destroy(gameObject);
-            SceneManager.LoadScene("CS_Scene_5_Phase_Bad");
+            SceneManager.LoadScene("CS_BadEnding");
         }
     }
 

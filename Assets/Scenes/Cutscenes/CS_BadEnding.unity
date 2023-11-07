@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f5e4136c59cbd4da1b63f44604c0f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: CS_Scene_ThankYou
+  sceneName: CS_Scene_MainMenu
 --- !u!328 &83707016
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -255,7 +255,7 @@ VideoPlayer:
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 0
-  m_AspectRatio: 2
+  m_AspectRatio: 3
   m_DataSource: 0
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2

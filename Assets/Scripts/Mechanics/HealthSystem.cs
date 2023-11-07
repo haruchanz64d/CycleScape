@@ -74,13 +74,6 @@ public class HealthSystem : MonoBehaviour
         if (isSlowed)
         {
             rb.velocity *= slowAmount;
-
-            slowDuration -= Time.deltaTime;
-            if (slowDuration <= 0f)
-            {
-                isSlowed = false;
-                slowDuration = 5f;
-            }
         }
     }
 

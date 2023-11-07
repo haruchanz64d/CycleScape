@@ -7,7 +7,7 @@ public class GameManagerV2 : MonoBehaviour
     public GameObject eggObject;
     public GameObject playerObject;
 
-    private float timePerPhase = 75;
+    private float timePerPhase = 70;
     public float TimeRemaining { get; set; }
 
     public GameManagerV2()
@@ -27,12 +27,12 @@ public class GameManagerV2 : MonoBehaviour
 
         if (playerIsDead())
         {
-            SceneManager.LoadScene("CS_Scene_5_Phase_Bad");
+            SceneManager.LoadScene("CS_BadEnding");
         }
 
         if (TimeRemaining <= 0f)
         {
-            SceneManager.LoadScene("CS_Scene_5_Phase_Good");
+            SceneManager.LoadScene("CS_GoodEnding");
         }
     }
 }

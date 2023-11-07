@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
     private void HandleMovement()
     {
         Vector2 movement = inputActions.Gameplay.Move.ReadValue<Vector2>();
-        rigidbody2D.velocity = new Vector2(0f, movement.y * m_movementSpeed);
+        rigidbody2D.velocity = new Vector2(movement.x * m_movementSpeed, movement.y * m_movementSpeed);
     }
 
     public void HandleDeathAnimation()
